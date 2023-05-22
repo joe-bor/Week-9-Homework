@@ -32,7 +32,7 @@ app.get("/tip/:total?/:tipPercentage?", (req, res) => {
   }
 });
 
-app.get("/magic/*", (req, res) => {
+app.get("/magic/:question", (req, res) => {
   const magicResponses = [
     "It is certain",
     "It is decidedly so",
@@ -55,8 +55,9 @@ app.get("/magic/*", (req, res) => {
     "Outlook not so good",
     "Very doubtful",
   ];
+  const question = req.params.question.replace("", "%20");
   let randomIndex = Math.floor(Math.random() * magicResponses.length);
-  res.send(magicResponses[randomIndex]);
+  res.send(`<h1>${magicResponses[randomIndex]}</h1>`);
 });
 /* END */
 
