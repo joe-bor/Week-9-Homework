@@ -55,10 +55,25 @@ app.get("/magic/:question", (req, res) => {
     "Outlook not so good",
     "Very doubtful",
   ];
-  const question = req.params.question.replace("", "%20");
   let randomIndex = Math.floor(Math.random() * magicResponses.length);
   res.send(`<h1>${magicResponses[randomIndex]}</h1>`);
 });
+
+//Fibonnaci
+app.get("/fibonacci/:num", (req, res) => {
+  const fibonacci = [
+    0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610, 987, 1597,
+    2584, 4181,
+  ];
+
+  let num = parseInt(req.params.num);
+  if (fibonacci.includes(num)) {
+    res.send("Very good, It is Fibonacci");
+  } else {
+    res.send("I can tell this is not a fibonacci number");
+  }
+});
+
 /* END */
 
 app.listen(port, () => {
