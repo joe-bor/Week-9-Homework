@@ -61,10 +61,10 @@ app.get("/magic/:question", (req, res) => {
 
 //TODO: MAKE IT DYNAMIC!
 app.get("/fibonacci/:num", (req, res) => {
-  const fibonacci = [
-    0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610, 987, 1597,
-    2584, 4181,
-  ];
+  // const fibonacci = [
+  //   0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610, 987, 1597,
+  //   2584, 4181,
+  // ];
 
   // take req.params.num and throw it in checkFib
 
@@ -78,14 +78,31 @@ app.get("/fibonacci/:num", (req, res) => {
     // first = second, second = fib, fib = sum (first + second) ?
     // repeat until fib is less than num
     // function stops num is greater than fib
+    // res.send corresponding message depending on result
+
+    let first = 0;
+    let second = 1;
+    let fib = 0;
+    let fibArr = [];
+
+    while (fib < num) {
+      fib = first + second;
+      fibArr.push(fib);
+      first = second;
+      second = fib;
+    }
+
+    if (fibArr.includes(num)) return true;
+    else return false;
   }
 
   let num = parseInt(req.params.num);
-  if (fibonacci.includes(num)) {
-    res.send("Very good, It is Fibonacci");
-  } else {
-    res.send("I can tell this is not a fibonacci number");
-  }
+
+  if (checkFib(num)) {
+    res.send(`Very good. ${num} is a fibonacci number`);
+    console.log(`${fibArr}`);
+  } else res.send("I can tell this is not a fibonacci number");
+  console.log(`${fibArr}`);
 });
 
 /* END */
