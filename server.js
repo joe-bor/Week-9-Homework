@@ -59,12 +59,26 @@ app.get("/magic/:question", (req, res) => {
   res.send(`<h1>${magicResponses[randomIndex]}</h1>`);
 });
 
-//Fibonnaci
+//TODO: MAKE IT DYNAMIC!
 app.get("/fibonacci/:num", (req, res) => {
   const fibonacci = [
     0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610, 987, 1597,
     2584, 4181,
   ];
+
+  // take req.params.num and throw it in checkFib
+
+  function checkFib(num) {
+    // first = 0
+    // second = 1
+    // fib = first + second
+    // 0 + 1 = 1
+    // 1 + 1 = 2
+    // 1 + 2 = 3
+    // first = second, second = fib, fib = sum (first + second) ?
+    // repeat until fib is less than num
+    // function stops num is greater than fib
+  }
 
   let num = parseInt(req.params.num);
   if (fibonacci.includes(num)) {
