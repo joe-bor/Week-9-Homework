@@ -100,9 +100,7 @@ app.get("/fibonacci/:num", (req, res) => {
 
   if (checkFib(num)) {
     res.send(`Very good. ${num} is a fibonacci number`);
-    console.log(`${fibArr}`);
   } else res.send("I can tell this is not a fibonacci number");
-  console.log(`${fibArr}`);
 });
 
 /* END */
